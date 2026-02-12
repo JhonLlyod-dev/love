@@ -77,6 +77,8 @@ export default function Home() {
 
   const [isPlaying, setIsPlaying] = useState(false);
   function toggleMusic(){
+    if (!music) return;
+
     if (isPlaying) {
       music.pause();
       setIsPlaying(false);
