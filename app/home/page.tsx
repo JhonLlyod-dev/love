@@ -2,15 +2,21 @@
 
 import { useState, useRef, useEffect } from 'react';
 
-const music = new Audio('/sonata.mp3');
-music.volume = 0.05;
+
+
 
 export default function Home() {
   const [position, setPosition] = useState({ x: 50, y: 50 });
   const [hoverCount, setHoverCount] = useState(0);
   const [isStopped, setIsStopped] = useState(false);
   const imgRef = useRef<HTMLDivElement>(null);
+  const [music, setMusic] = useState<HTMLAudioElement | null>(null);
   
+  useEffect(() => {
+    const audio = new Audio('/sonata.mp3');
+    audio.volume = 0.05;
+    setMusic(audio);
+  }, []);
 
 
   const handleClick = (e: React.MouseEvent) => {
